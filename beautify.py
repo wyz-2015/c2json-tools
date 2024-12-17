@@ -12,11 +12,11 @@ def __convert__(inFile, outFile, sk):
 def main():
     cmdParser = argparse.ArgumentParser(
         description="美化Commando 2输出的json文件，使之更可读。Convert a json file from \"Commando 2\" to a readable json file.")
-    cmdParser.add_argument("inPath")
+    cmdParser.add_argument("inPath", help="传入文件路径。Path to input file.")
     cmdParser.add_argument(
-        "-o", "--outpath", dest="outPath", required=False, default=None)
+        "-o", "--outpath", dest="outPath", required=False, default=None, help="输出文件路径。Path to output file.")
     cmdParser.add_argument("--no_sort_keys", dest="no_sort_keys",
-                           action="store_false", help="不对输出的json作键名排序。Don't sort keys.")
+                           action="store_false", help="不对输出的json作各键排序。Don't sort keys.")
 
     args = cmdParser.parse_args()
     inPath = pathlib.Path(args.inPath).absolute()

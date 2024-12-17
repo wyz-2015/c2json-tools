@@ -18,7 +18,7 @@ def main():
     cmdParser.add_argument("--raw_json", action="store_true",
                            help="输出不经美化的json文件，仅在解压缩模式有用。Output raw json file. Only available in \"d\" mode.")
     cmdParser.add_argument("--no_sort_keys", dest="no_sort_keys",
-                           action="store_false", help="不对输出的json作键名排序。Don't sort keys.")
+                           action="store_false", help="不对输出的json作各键排序，仅在解压缩模式有用。Don't sort keys. Only available in \"d\" mode.")
 
     ###################################
     # 变量们
