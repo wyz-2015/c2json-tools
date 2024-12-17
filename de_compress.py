@@ -17,6 +17,8 @@ def main():
                            default=None, help="输出文件的路径。Path to output file.")
     cmdParser.add_argument("--raw_json", action="store_true",
                            help="输出不经美化的json文件，仅在解压缩模式有用。Output raw json file. Only available in \"d\" mode.")
+    cmdParser.add_argument("--no_sort_keys", dest="no_sort_keys",
+                           action="store_false", help="不对输出的json作键名排序。Don't sort keys.")
 
     ###################################
     # 变量们
@@ -26,6 +28,7 @@ def main():
     inFileStem = inPath.stem
     command = args.command.lower()
     raw_json = args.raw_json
+    no_sort_keys = args.no_sort_keys
 
     ##############################
     # 指定的命令不正确
@@ -52,7 +55,7 @@ def main():
             case "d":
                 outFileName = "{0:s}_decompressed.json".format(inFileStem)
 
-        outPath = str((inDir / outFileName))
+        outPath = inDir / outFileName
 
     #####################################
     # 处理
@@ -72,7 +75,8 @@ def main():
 
             outFile = open(outPath, "wt")
             jsonOption = None if (raw_json) else "\t"
-            json.dump(data, outFile, ensure_ascii=False, indent=jsonOption)
+            json.dump(data, outFile, ensure_ascii=False,
+                      indent=jsonOption, sort_keys=no_sort_keys)
 
     inFile.close()
     outFile.close()
