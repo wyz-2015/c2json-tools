@@ -9,7 +9,7 @@ def main():
     ######################
     # 命令行参数引入
     cmdParser = argparse.ArgumentParser(
-        description="(解)压缩Commando 2 mod文件的简单工具。A tool for (de)compress Commando 2 mod file.")
+        description="(解)压缩Commando 2 mod文件的简单工具。A tool for (de)compressing Commando 2 mod file.")
     cmdParser.add_argument("command",
                            help="命令：压缩(c)/解压缩(d)。command: (c)ompress/(d)ecompress")
     cmdParser.add_argument("inPath", help="传入的文件路径。Path to input file.")

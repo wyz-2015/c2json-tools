@@ -40,7 +40,7 @@ options:
 ```
 usage: de_compress.py [-h] [-o OUTPATH] [--raw_json] [--no_sort_keys] command inPath
 
-(解)压缩Commando 2 mod文件的简单工具。A tool for (de)compress Commando 2 mod file.
+(解)压缩Commando 2 mod文件的简单工具。A tool for (de)compressing Commando 2 mod file.
 
 positional arguments:
   command               命令：压缩(c)/解压缩(d)。command: (c)ompress/(d)ecompress
