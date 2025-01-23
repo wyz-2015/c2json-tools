@@ -10,7 +10,7 @@ def main():
     # 命令行参数引入
     cmdParser = argparse.ArgumentParser(
         description="(解)压缩Commando 2 mod文件的简单工具。A tool for (de)compressing Commando 2 mod file.")
-    cmdParser.add_argument("command",
+    cmdParser.add_argument("command", choices=tuple("cd"),
                            help="命令：压缩(c)/解压缩(d)。command: (c)ompress/(d)ecompress")
     cmdParser.add_argument("inPath", help="传入的文件路径。Path to input file.")
     cmdParser.add_argument("-o", "--outpath", required=False, dest="outPath",
@@ -31,11 +31,19 @@ def main():
     no_sort_keys = args.no_sort_keys
 
     ##############################
-    # 指定的命令不正确
-    if (command != "c" and command != "d"):
-        print("指定的命令“{0:s}”不正确。".format(command))
-        cmdParser.print_help()
-        return 1
+    # 指定的命令不正确(已通过设定argparse参数解决)
+    # if (command != "c" and command != "d"):
+    #    print("指定的命令“{0:s}”不正确。".format(command))
+    #    cmdParser.print_help()
+    #    return 1
+
+    #############################
+    # 避免输入输出为同个文件
+    outPath = args.outPath
+    if (outPath):
+        outPath = pathlib.Path(outPath).absolute()
+        if (inPath == outPath):
+            sys.exit("本程序不建议输入输出的文件为同一文件。")
 
     ################################
     # 打开文件指针
@@ -47,7 +55,6 @@ def main():
 
     ##################################
     # 目录自动处理
-    outPath = args.outPath
     if (not outPath):
         match command:
             case "c":

@@ -4,9 +4,14 @@ import argparse
 import pathlib
 
 
-def __convert__(inFile, outFile, sk):
+def __convert__(inPath: str, outPath: str, sk):
+    inFile = open(inPath, "rt")
     data = json.load(inFile)
+    inFile.close()
+
+    outFile = open(outPath, "wt")
     json.dump(data, outFile, indent="\t", ensure_ascii=False, sort_keys=sk)
+    outFile.close()
 
 
 def main():
@@ -31,13 +36,7 @@ def main():
         # outPath = "{0:s}/{1:s}".format(str(inDir), outFileName)
         outPath = inDir / outFileName
 
-    inFile = open(inPath, "rt")
-    outFile = open(outPath, "wt")
-
-    __convert__(inFile, outFile, sk)
-
-    inFile.close()
-    outFile.close()
+    __convert__(inPath, outPath, sk)
 
 
 if (__name__ == "__main__"):
