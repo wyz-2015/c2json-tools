@@ -12,7 +12,7 @@ def gen_mine_key(x, y):
     x = (int(x) if (num_is_int(x)) else x)
     y = (int(y) if (num_is_int(y)) else y)
 
-    return "enemy33>{0}>{1}".format(x, y)
+    return "enemy06>{0}>{1}".format(x, y)
 
 
 def main():
