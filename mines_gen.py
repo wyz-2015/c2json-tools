@@ -120,25 +120,29 @@ def main():
 
         for mine in minesList:
             minesDict.update(mine.get_dict())
-        print(json.dumps(minesDict, ensure_ascii=False,
-              indent='\t', sort_keys=False))
 
         outputText = ["\n提示："]
         if (domino_check(minesList)):
             outputText.append("这样的参数下，地雷可能 可以 连续引爆")
         else:
             outputText.append("这样的参数下，地雷可能 无法 连续引爆")
-        print('\n'.join(outputText))
+
+        print(
+            json.dumps(minesDict, ensure_ascii=False,
+                       indent='\t', sort_keys=False),
+            '\n'.join(outputText)
+        )
 
     elif (n_mines == 1):
-        keyName="enemy06>{0}>{1}".format((x_start + x_end) / 2, (y_start + y_end) / 2)
-        mineTemplate3=copy.deepcopy(MINE_TEMPLATE)
-        mineTemplate3["dsize"]=dsize
+        keyName = "enemy06>{0}>{1}".format(
+            (x_start + x_end) / 2, (y_start + y_end) / 2)
+        mineTemplate3 = copy.deepcopy(MINE_TEMPLATE)
+        mineTemplate3["dsize"] = dsize
 
         mineDict = {keyName: mineTemplate3}
-        print(json.dumps(mineDict, ensure_ascii=False, indent='\t', sort_keys=False))
-
-        print("\n提示：\n只放一个地雷有使用本程序的必要吗？(恼)")
+        print(json.dumps(mineDict, ensure_ascii=False, indent='\t', sort_keys=False),
+              "\n提示：\n只放一个地雷有使用本程序的必要吗？(恼)"
+              )
 
     else:
         sys.exit("指定的地雷数不合理")
