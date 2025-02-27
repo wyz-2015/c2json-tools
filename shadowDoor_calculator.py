@@ -41,8 +41,7 @@ class Shadow_Door():
 
         deltaX = [(self.dsize * self.__sgn__(self.xscale) * x)
                   for x in self.defaultBreakableArea_X]
-        deltaY = [(self.dsize * self.__sgn__(self.xscale) * y)
-                  for y in self.defaultBreakableArea_Y]
+        deltaY = [(self.dsize * y) for y in self.defaultBreakableArea_Y]
 
         deltaX.sort()
         deltaY.sort()
@@ -64,8 +63,7 @@ class Shadow_Door():
 
         deltaX = [(self.dsize * self.__sgn__(self.xscale) * x)
                   for x in self.defaultShadowArea_X]
-        deltaY = [(self.dsize * self.__sgn__(self.xscale) * y)
-                  for y in self.defaultShadowArea_Y]
+        deltaY = [(self.dsize * y) for y in self.defaultShadowArea_Y]
 
         deltaX.sort()
         deltaY.sort()
